@@ -8,12 +8,11 @@ const app = express()
 connnectedDatabase();
 
 // Importing all routes
-// const user = require('./routes/user') //register user
+const userRoutes = require('./routes/user') //register user
 
-// app.use('/api/v1', user)
+app.use('/api/v1', userRoutes)
 
-const registerRouter = require('./controller/userController')
-
+// const registerRouter = require('./controller/userController')
 
 app.use(express.json())
 

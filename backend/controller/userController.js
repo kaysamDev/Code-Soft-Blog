@@ -1,8 +1,8 @@
-const {User, validate} = require('../models/user')
+const {User, validateUser} = require('../models/user')
 const bcrypt = require('bcrypt')
 
-const registerUser = async ( req, res) => {
-    const { error } = validate(req.body)
+exports.registerUser = async ( req, res) => {
+    const { error } = validateUser(req.body)
     if (error) {
         return res.status(400).send(error.details[0].message)
     }
@@ -25,5 +25,3 @@ const registerUser = async ( req, res) => {
         }
     }
 }
-
-module.exports = registerUser

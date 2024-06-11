@@ -18,12 +18,14 @@ const userSchema = new mongoose.Schema({
 
 const validateUser = (user) => {
   const schema = joi.object({
-    name: Joi.string().min(5).max(100).required(),
-    email: Joi.string().min(5).max(255).required().email(),
-    password: Joi.string().min(8).max(100).required(),
+    name: joi.string().min(5).max(100).required(),
+    email: joi.string().min(5).max(255).required().email(),
+    password: joi.string().min(8).max(100).required(),
   });
   return schema.validate(user);
 };
 
-module.exports = validateUser
-module.exports = mongoose.model('User', userSchema)
+module.exports = {
+  User: mongoose.model("user", userSchema),
+  validateUser,
+};
